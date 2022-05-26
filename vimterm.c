@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
-#define TERMINAL = "/usr/bin/kitty"
-#define EDITOR   = "/usr/bin/vim"
+#define TERMINAL "/usr/bin/kitty"
+#define EDITOR   "/usr/bin/vim"
 int main(int argc, char* argv[]) {
 	char* a[2] = {NULL};
 	char* args[argc+1];
@@ -11,5 +11,5 @@ int main(int argc, char* argv[]) {
 		args[i+1] = argv[i];
 	}
 	args[argc+1] = NULL;
-	execvp(terminal, args);
+	execvp(TERMINAL, args);
 }
