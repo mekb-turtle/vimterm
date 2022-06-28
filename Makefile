@@ -1,9 +1,20 @@
-.PHONY: all
-all: clean compile
+CC=cc
+CFLAGS=-Wall -O2
+LFLAGS=-lm -s
+
+OBJS=vimterm.o
+
+TARGET=vimterm
+
+.PHONY: all clean
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) -o $@ $^ $(LFLAGS)
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+
 clean:
-	rm -fv -- vimterm
-compile: vimterm
-install:
-	install -Dm755 vimterm /usr/bin/vimterm
-uninstall:
-	rm -fv -- /usr/bin/vimterm
+	rm -fv -- $(OBJS) $(TARGET)

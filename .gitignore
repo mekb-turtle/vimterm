@@ -1,2 +1,3 @@
 vimterm
+*.o
 *.swp
